@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AshOS TV — Todos os streamings, TV ao vivo e YouTube sem anúncios em uma só tela</title>
+  <meta name="description" content="Filmes, séries, animes dublados, desenhos, TV ao vivo e YouTube Premium sem anúncio algum — reunidos em português no Fire Stick, Android, Android TV, iPhone e Windows. Entre com o código ASH7X4.">
+  <meta name="theme-color" content="#07080B">
+  <meta property="og:title" content="AshOS TV — Todo o streaming em um só cinema">
+  <meta property="og:description" content="Conteúdos de todas as plataformas de streaming, TV ao vivo e YouTube sem anúncios. Baixe agora e entre usando o código ASH7X4.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-ashos.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Fundo cinematográfico Cinema Prism -->
+  <div class="cinema-backdrop" aria-hidden="true">
+    <canvas id="prismCanvas"></canvas>
+    <div class="aurora aurora-amber"></div>
+    <div class="aurora aurora-coral"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- Navbar Liquid Glass Flutuante -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#topo" aria-label="AshOS TV — início">
+        <img src="assets/favicon.svg" alt="" width="34" height="34" class="brand-icon">
+        <span class="brand-text">AshOS<strong>TV</strong></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#streamings">Plataformas</a>
+        <a href="#telas-reais">Telas Reais</a>
+        <a href="#youtube" class="nav-yt">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          YouTube Grátis
+        </a>
+        <a href="#funcoes">Funções</a>
+        <a href="#dispositivos">Aparelhos</a>
+        <a href="#baixar">Baixar</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="code-pill copy-code-btn" data-code="ASH7X4" aria-label="Copiar código de acesso ASH7X4">
+          <span class="code-pill-label">Código</span>
+          <strong class="mono">ASH7X4</strong>
+          <svg class="icon-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="7" y="7" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M13 5V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13H5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <a class="btn btn-glass btn-sm" href="app/index.html" target="_blank">Abrir Web App</a>
+        <a class="btn btn-primary btn-sm" href="#baixar">Baixar Grátis</a>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Abrir menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-drawer" id="mobileDrawer" hidden>
+      <a href="#streamings">Plataformas reunidas</a>
+      <a href="#telas-reais">Telas reais da interface</a>
+      <a href="#youtube">YouTube Premium sem anúncios</a>
+      <a href="#funcoes">Todas as funções</a>
+      <a href="#dispositivos">Aparelhos e Em Breve</a>
+      <a href="app/index.html">Abrir AshOS TV direto no Navegador</a>
+      <a href="#baixar" class="drawer-cta">Baixar + QR Code + Código ASH7X4</a>
+    </div>
+  </header>
+
+  <main id="topo">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            <span class="mono">ASHOS v2.0.1 · 8 SERVIDORES PT-BR · 196 CANAIS · ZERO ANÚNCIOS</span>
+          </div>
+
+          <h1 class="hero-title">
+            Todo o streaming.<br>
+            TV ao vivo &amp; YouTube livre.<br>
+            <em class="serif-accent">AshOS Cinema.</em>
+          </h1>
+
+          <p class="hero-subtitle">
+            Filmes, séries, animes dublados, desenhos, canais ao vivo e <strong>YouTube Premium sem propaganda alguma</strong> — tudo em português do Brasil primeiro, na sua TV, celular, iPhone ou Windows.
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#baixar">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Baixar Agora + QR Code
+            </a>
+            <a class="btn btn-glass btn-lg" href="#telas-reais">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="12" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 20h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Ver Telas Reais
+            </a>
+          </div>
+
+          <!-- Cartão VIP do Código de Entrada -->
+          <div class="vip-pass">
+            <div class="vip-pass-left">
+              <span class="vip-label">Entre usando o código</span>
+              <div class="vip-code-row">
+                <span class="vip-code mono" id="heroCodeText">ASH7X4</span>
+                <span class="vip-badge">1.000 acessos individuais</span>
+              </div>
+              <p class="vip-note">Digite esse código ao abrir o app para entrar direto no AshOS TV.</p>
+            </div>
+            <button type="button" class="btn btn-glass copy-code-btn" data-code="ASH7X4">
+              <svg class="icon-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="7" y="7" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M13 5V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13H5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="copy-label">Copiar código</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Palco Visual Hero com Print Real em 1080p -->
+        <div class="hero-stage">
+          <div class="stage-ambilight" id="heroAmbilight" aria-hidden="true"></div>
+          <div class="tv-frame hero-tv-frame">
+            <div class="tv-bezel">
+              <div class="tv-screen">
+                <img
+                  id="heroPreviewImg"
+                  src="assets/screens/inicio.png"
+                  alt="Tela inicial real do AshOS TV mostrando destaques de filmes, séries e navegação Liquid Glass"
+                  width="1920"
+                  height="1080"
+                  fetchpriority="high"
+                >
+                <div class="tv-glare" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="tv-stand" aria-hidden="true"></div>
+          </div>
+
+          <!-- Chips flutuantes fora do conteúdo principal -->
+          <div class="stage-hud">
+            <div class="hud-pills" role="tablist" aria-label="Prévia rápida da interface">
+              <button type="button" class="hud-pill is-active" data-hero-screen="assets/screens/inicio.png" data-ambilight="amber">Início</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/filmes-grade.png" data-ambilight="coral">Filmes</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/series.png" data-ambilight="blue">Séries</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/desenhos.png" data-ambilight="gold">Animes &amp; Desenhos</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/detalhes.png" data-ambilight="amber">Detalhes</button>
+            </div>
+            <div class="hud-tags">
+              <span class="hud-tag">YouTube 0 anúncios</span>
+              <span class="hud-tag">Abre em 1,4s</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de métricas reais -->
+      <div class="container metrics-strip reveal">
+        <div class="metric-item">
+          <strong class="metric-value">1,4 s</strong>
+          <span>para começar a tocar</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value">100%</strong>
+          <span>dublado PT-BR no topo</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value">Zero</strong>
+          <span>anúncios no app e no YouTube</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value">6 perfis</strong>
+          <span>com PIN e Modo Infantil</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value mono">ASH7X4</strong>
+          <span>código de entrada</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TODAS AS PLATAFORMAS DE STREAMING ==================== -->
+    <section class="section" id="streamings">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">CATÁLOGO UNIFICADO</span>
+          <h2>Conteúdos de todas as plataformas de streaming, em um único lugar.</h2>
+          <p class="section-sub">
+            Chega de assinar oito serviços diferentes ou ficar procurando em qual app está o filme da noite. O AshOS TV reúne os lançamentos, clássicos, séries, animes e desenhos de todas as grandes plataformas em uma interface única e organizada.
+          </p>
+        </div>
+
+        <div class="platforms-marquee glass-panel reveal">
+          <div class="platforms-grid">
+            <div class="platform-chip"><span class="p-dot p-red"></span>Netflix</div>
+            <div class="platform-chip"><span class="p-dot p-blue"></span>Prime Video</div>
+            <div class="platform-chip"><span class="p-dot p-cyan"></span>Disney+</div>
+            <div class="platform-chip"><span class="p-dot p-indigo"></span>Max</div>
+            <div class="platform-chip"><span class="p-dot p-silver"></span>Apple TV+</div>
+            <div class="platform-chip"><span class="p-dot p-sky"></span>Paramount+</div>
+            <div class="platform-chip"><span class="p-dot p-orange"></span>Crunchyroll</div>
+            <div class="platform-chip"><span class="p-dot p-coral"></span>Globoplay</div>
+            <div class="platform-chip"><span class="p-dot p-amber"></span>Star+</div>
+            <div class="platform-chip"><span class="p-dot p-green"></span>TV ao Vivo</div>
+            <div class="platform-chip platform-chip-yt"><span class="p-dot p-yt"></span>YouTube sem anúncios</div>
+          </div>
+        </div>
+
+        <div class="compare-grid reveal">
+          <article class="glass-card compare-old">
+            <div class="compare-head">
+              <span class="compare-tag compare-tag-muted">Como era antes</span>
+              <h3>Vários apps, várias contas, várias faturas</h3>
+            </div>
+            <ul class="compare-list">
+              <li>Pagar mensalidade separada para filmes, séries, desenhos e animes</li>
+              <li>Perder tempo procurando em qual catálogo está o que você quer ver</li>
+              <li>Aturar propaganda no meio dos vídeos do YouTube toda hora</li>
+              <li>Começar na TV e não conseguir continuar direto no celular ou PC</li>
+            </ul>
+          </article>
+
+          <article class="glass-card compare-lume spotlight-card">
+            <div class="compare-head">
+              <span class="compare-tag compare-tag-lume">Com o AshOS TV</span>
+              <h3>Tudo reunido, em português e sem anúncio</h3>
+            </div>
+            <ul class="compare-list">
+              <li>Catálogo completo com produções de todas as plataformas de streaming num só lugar</li>
+              <li>Áudio dublado em português do Brasil e qualidade 1080p / 4K priorizados</li>
+              <li>YouTube Premium integrado grátis, sem anúncio antes, durante ou depois</li>
+              <li>Começa na TV da sala e continua do mesmo segundo no celular, iPhone ou Windows</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VITRINE REAL DA INTERFACE ==================== -->
+    <section class="section" id="telas-reais">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">PRINTS REAIS · SEM MONTAGEM</span>
+          <h2>Veja por dentro. Interface real em ação.</h2>
+          <p class="section-sub">
+            Estética cinema em vidro líquido, foco nítido para controle remoto na TV e toque instantâneo no celular. Clique em qualquer tela abaixo para explorar ou ampliar em tela cheia.
+          </p>
+        </div>
+
+        <div class="showcase-shell glass-panel reveal">
+          <div class="showcase-tabs" role="tablist" aria-label="Telas reais do AshOS TV">
+            <button type="button" class="showcase-tab is-active" role="tab" aria-selected="true" data-index="0">
+              <span class="tab-num mono">01</span>
+              <span class="tab-title">Início &amp; Destaques</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="1">
+              <span class="tab-num mono">02</span>
+              <span class="tab-title">Filmes · Catálogo</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="2">
+              <span class="tab-num mono">03</span>
+              <span class="tab-title">Filmes · Destaques</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="3">
+              <span class="tab-num mono">04</span>
+              <span class="tab-title">Séries</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="4">
+              <span class="tab-num mono">05</span>
+              <span class="tab-title">Animes &amp; Desenhos</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="5">
+              <span class="tab-num mono">06</span>
+              <span class="tab-title">Novos Episódios</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="6">
+              <span class="tab-num mono">07</span>
+              <span class="tab-title">Detalhes</span>
+            </button>
+          </div>
+
+          <div class="showcase-stage">
+            <div class="showcase-ambilight" id="showcaseAmbilight" aria-hidden="true"></div>
+            <figure class="showcase-figure">
+              <div class="tv-bezel tv-bezel-showcase">
+                <div class="tv-screen">
+                  <img
+                    id="showcaseImg"
+                    src="assets/screens/inicio.png"
+                    alt="Tela inicial real do AshOS TV com destaques e menu superior"
+                    width="1920"
+                    height="1080"
+                    loading="lazy"
+                  >
+                </div>
+              </div>
+              <figcaption class="showcase-caption">
+                <div>
+                  <span class="caption-badge mono" id="showcaseBadge">TELA REAL 01 / 07</span>
+                  <h3 id="showcaseTitle">Início &amp; Destaques Cinematográficos</h3>
+                  <p id="showcaseDesc">Abertura instantânea com carrossel em destaque duplo, bordas luminosas nítidas e acesso direto ao que você estava assistindo.</p>
+                </div>
+                <button type="button" class="btn btn-glass" id="openLightboxBtn">
+                  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Ampliar tela cheia
+                </button>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="screens-mosaic" aria-label="Galeria de telas reais do AshOS TV">
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="1">
+              <div class="mosaic-media">
+                <img src="assets/screens/filmes-grade.png" alt="Catálogo completo de Filmes com capas e filtros de gênero no AshOS TV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">FILMES · CATÁLOGO</span>
+                <strong>Grade completa com filtros por gênero</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="3">
+              <div class="mosaic-media">
+                <img src="assets/screens/series.png" alt="Tela de Séries com lançamentos e produções em alta no AshOS TV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">SÉRIES</span>
+                <strong>Lançamentos, temporadas e séries em alta</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="4">
+              <div class="mosaic-media">
+                <img src="assets/screens/desenhos.png" alt="Tela de Desenhos e Animes com Black Clover, Attack on Titan e One Piece" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">ANIMES &amp; DESENHOS</span>
+                <strong>Animes dublados e desenhos separados</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="2">
+              <div class="mosaic-media">
+                <img src="assets/screens/filmes.png" alt="Tela de Filmes com destaques duplos e fileira Em alta no AshOS TV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">FILMES · DESTAQUES</span>
+                <strong>Estreias no topo e fileiras organizadas</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="5">
+              <div class="mosaic-media">
+                <img src="assets/screens/fileiras.png" alt="Tela inicial descendo mostrando novos episódios e lembretes" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">INÍCIO · NOVIDADES</span>
+                <strong>Avisos de novos episódios e lembretes</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="6">
+              <div class="mosaic-media">
+                <img src="assets/screens/detalhes.png" alt="Tela de detalhes de filme com sinopse em português e 1080p" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">DETALHES DO TÍTULO</span>
+                <strong>Sinopse em PT-BR, elenco e play em 1 clique</strong>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BÔNUS: YOUTUBE PREMIUM SEM ANÚNCIOS ==================== -->
+    <section class="section" id="youtube">
+      <div class="container">
+        <div class="yt-showcase glass-panel reveal">
+          <div class="yt-glow" aria-hidden="true"></div>
+          <div class="yt-grid">
+            <div class="yt-copy">
+              <div class="yt-badge">
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.14 5.6 12 5.6 12 5.6s-6.14 0-7.86.46A2.75 2.75 0 0 0 2.2 8.001C1.74 9.72 1.74 12 1.74 12s0 2.28.46 3.999a2.75 2.75 0 0 0 1.94 1.94C5.86 18.4 12 18.4 12 18.4s6.14 0 7.86-.46a2.75 2.75 0 0 0 1.94-1.94C22.26 14.28 22.26 12 22.26 12s0-2.28-.46-3.999ZM9.9 14.9V9.1l5.2 2.9-5.2 2.9Z"/>
+                </svg>
+                <span>BÔNUS INCLUSO NO ASHOS TV · ZERO PROPAGANDA</span>
+              </div>
+
+              <h2>YouTube Premium de graça, <em class="serif-accent">sem anúncio algum.</em></h2>
+
+              <p class="yt-lead">
+                Dentro do próprio AshOS TV você já ganha um YouTube completo integrado — <strong>sem nenhum anúncio antes, durante ou depois dos vídeos</strong>, e sem pagar assinatura extra.
+              </p>
+
+              <div class="yt-perks">
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Zero propagandas</strong>
+                    <span>Assista a músicas, podcasts, aulas e canais inteiros sem interrupções.</span>
+                  </div>
+                </div>
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Já incluso na sua conta</strong>
+                    <span>Entrou com o código <span class="mono">ASH7X4</span>, já está liberado sem custo extra.</span>
+                  </div>
+                </div>
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Na TV, no celular e no PC</strong>
+                    <span>Funciona no Fire Stick, Android, Android TV, iPhone e Windows.</span>
+                  </div>
+                </div>
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Protegido no Modo Kids</strong>
+                    <span>Oculto automaticamente no perfil Infantil para segurança das crianças.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guia Interativo de Acesso ao YouTube -->
+            <div class="yt-guide glass-card">
+              <div class="yt-guide-head">
+                <div>
+                  <span class="mono guide-kicker">ONDE ENCONTRAR NO APP</span>
+                  <h3>Como abrir em 3 toques</h3>
+                </div>
+                <div class="yt-mode-switch" role="tablist" aria-label="Escolha o aparelho para ver o guia">
+                  <button type="button" class="yt-mode-btn is-active" data-yt-mode="mobile" role="tab" aria-selected="true">Celular / iPhone</button>
+                  <button type="button" class="yt-mode-btn" data-yt-mode="tv" role="tab" aria-selected="false">TV / Fire Stick</button>
+                </div>
+              </div>
+
+              <div class="yt-mini-ui" id="ytMiniUi">
+                <div class="mini-ui-bar">
+                  <span class="mini-logo">AshOS<strong>TV</strong></span>
+                  <div class="mini-ui-right">
+                    <span class="mini-pill" id="miniUiSearch">Buscar</span>
+                    <span class="mini-pill mini-pill-highlight" id="miniUiTrigger">••• Perfil</span>
+                  </div>
+                </div>
+                <div class="mini-ui-menu">
+                  <div class="mini-menu-item">Minha Conta</div>
+                  <div class="mini-menu-item">Trocar de Perfil</div>
+                  <div class="mini-menu-item mini-menu-yt">
+                    <span class="mini-yt-dot"></span>
+                    <span>YouTube</span>
+                    <span class="mini-yt-tag">SEM ANÚNCIOS</span>
+                  </div>
+                  <div class="mini-menu-item">Ajustes</div>
+                </div>
+              </div>
+
+              <ol class="yt-steps">
+                <li>
+                  <span class="step-num mono">1</span>
+                  <div>
+                    <strong>Abra o AshOS TV</strong>
+                    <p>Entre normalmente com sua conta ou usando o código <strong class="mono">ASH7X4</strong>.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="step-num mono">2</span>
+                  <div>
+                    <strong id="ytStep2Title">Toque nos três pontinhos (•••)</strong>
+                    <p id="ytStep2Desc">No celular Android e no iPhone, eles ficam lá no topo, bem ao lado da lupa de busca.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="step-num mono">3</span>
+                  <div>
+                    <strong>Toque em YouTube e aproveite</strong>
+                    <p>Vídeos livres, busca completa e reprodução limpa — zero propaganda.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BENTO GRID — TODAS AS FUNÇÕES ==================== -->
+    <section class="section" id="funcoes">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">TUDO O QUE VOCÊ GANHA</span>
+          <h2>Cada detalhe pensado para você só apertar play.</h2>
+          <p class="section-sub">
+            Do áudio dublado em português até a sincronia fina de legenda dentro do vídeo — conheça todas as funções exclusivas do AshOS TV.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="glass-card bento-card bento-wide spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 0c2.5 2.4 3.8 5.4 3.8 9s-1.3 6.6-3.8 9m0-18c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9M3.6 9.5h16.8M3.6 14.5h16.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">IDIOMA &amp; QUALIDADE</span>
+            <h3>Português do Brasil sempre em 1º lugar — inclusive em Animes</h3>
+            <p>
+              Dublado e áudio duplo aparecem no topo, sinopses e títulos vêm traduzidos, e você tem qualidade Full HD 1080p e 4K priorizadas. Nos animes, um filtro inteligente garante áudio realmente dublado em PT-BR no primeiro clique, sem surpresa em outro idioma.
+            </p>
+            <div class="bento-chips">
+              <span>1080p &amp; 4K</span>
+              <span>Animes Dublados</span>
+              <span>Trailers em PT-BR</span>
+            </div>
+          </article>
+
+          <article class="glass-card bento-card bento-wide spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/>
+                <path d="m10 9.5 5 2.5-5 2.5v-5Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">PLAYER DE CINEMA</span>
+            <h3>Controle absoluto sem sair do filme</h3>
+            <p>
+              <strong>Smart Auto-Sub:</strong> áudio em português desliga a legenda; áudio original liga a legenda PT automaticamente. Ajuste sincronia de legenda em <code>±0,5 s</code>, escolha velocidade de <code>0.75×</code> até <code>2.0×</code>, troque de versão dentro do próprio player, ative áudio noturno, timer para dormir, trava de tela, toque duplo <code>±15 s</code> no celular e Picture-in-Picture (PiP) no iPhone.
+            </p>
+            <div class="bento-chips">
+              <span>Smart Auto-Sub</span>
+              <span>Sincronia ±0,5 s</span>
+              <span>0.75× a 2.0×</span>
+              <span>Modo Noturno</span>
+            </div>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M13 2 4 14h7l-1 8 10-12h-7l0-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">VELOCIDADE</span>
+            <h3>Abre e já toca (~1,4 s)</h3>
+            <p>
+              Abertura animada Cinema Prism super leve e pré-carregamento inteligente do filme e do próximo episódio antes mesmo de você terminar o atual.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                <path d="M7.8 7.8a6 6 0 0 0 0 8.4m8.4-8.4a6 6 0 0 1 0 8.4M4.9 4.9a10 10 0 0 0 0 14.2m14.2-14.2a10 10 0 0 1 0 14.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">CANAL AO VIVO</span>
+            <h3>TV ao Vivo + Guia de Programação</h3>
+            <p>
+              Canais ao vivo na palma da mão com guia de programação completo das próximas 12h a 24h e troca instantânea de canal.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM8 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-2.3 0-4.5 1.1-5.2 3.2-.2.5.2.8.7.8h9c.5 0 .9-.3.7-.8-.7-2.1-2.9-3.2-5.2-3.2ZM8 14.5c-2.2 0-4.2 1-4.8 3-.2.4.1.5.5.5h5.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">FAMÍLIA &amp; KIDS</span>
+            <h3>Até 6 perfis com PIN e Modo Infantil</h3>
+            <p>
+              Cada pessoa tem sua lista e progresso separados. O Perfil Infantil é blindado só com desenhos, limite de tempo por dia e zero acesso adulto.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="2" y="5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>
+                <rect x="15" y="10" width="7" height="10" rx="1.8" fill="#07080B" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">SINCRONIA TOTAL</span>
+            <h3>Continuar Assistindo entre telas</h3>
+            <p>
+              Comece na TV da sala, continue no celular no caminho e termine no PC — no mesmo segundo, com botão <code>✓ Já assisti</code> e aba de concluídos.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h16M4 12h10M4 17h13m3-6 2 2-2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">SÉRIES &amp; SAGAS</span>
+            <h3>Pula abertura, Sagas &amp; Em Breve</h3>
+            <p>
+              Contagem automática do próximo episódio, aviso de episódio novo, franquias completas na ordem certa e lembretes de estreias na aba <em>Em Breve</em>.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="7" y="2" width="10" height="20" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="12" cy="17.5" r="1" fill="currentColor"/>
+                <path d="M10 6h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">CONTROLE NA MÃO</span>
+            <h3>Celular vira controle remoto</h3>
+            <p>
+              Escolha o filme ou a série navegando pelo celular e envie com um toque para tocar direto na tela grande da TV da sala.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">SEM DOR DE CABEÇA</span>
+            <h3>Atualiza sozinho &amp; Teste em 1 clique</h3>
+            <p>
+              Melhorias chegam direto dentro do app sem perder suas listas. E nos Ajustes você ainda testa conexão, catálogo e player em 1 clique.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DISPONIBILIDADE & CHEGANDO EM BREVE ==================== -->
+    <section class="section" id="dispositivos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">MULTIPLATAFORMA REAL</span>
+          <h2>Em todas as telas que você usa hoje — e nas próximas TVs.</h2>
+          <p class="section-sub">
+            Interface desenhada sob medida para cada aparelho: controle remoto na TV, toque no celular, vidro nativo no iPhone e app completo no Windows.
+          </p>
+        </div>
+
+        <div class="devices-grid reveal">
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v2.0.1</span>
+              <span class="mono device-arch">APK</span>
+            </div>
+            <h3>Celular &amp; Tablet Android</h3>
+            <p>Toque duplo ±15s, envio direto para a TV da sala e acesso rápido ao YouTube sem anúncios pelos três pontinhos.</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v2.0.1</span>
+              <span class="mono device-arch">TV</span>
+            </div>
+            <h3>Android TV &amp; Google TV</h3>
+            <p>Navegação 100% pelo controle remoto, destaques em tela cheia e abertura ultrarrápida direto na sua Smart TV ou TV Box.</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v2.0.1</span>
+              <span class="mono device-arch">32-bit</span>
+            </div>
+            <h3>Amazon Fire TV Stick</h3>
+            <p>Versão especial ultraleve otimizada para o Fire Stick rodar fluido a 60 fps e com consumo mínimo de memória.</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v2.1.2</span>
+              <span class="mono device-arch">Win7–11</span>
+            </div>
+            <h3>Windows (do 7 ao 11)</h3>
+            <p>Janela nativa com player acoplado e instalador em 1 clique — compatível até com Windows 7 antigo (32 e 64 bits).</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v2.0.1</span>
+              <span class="mono device-arch">iOS</span>
+            </div>
+            <h3>iPhone (iOS)</h3>
+            <p>Visual Liquid Glass feito para iPhone, suporte a Picture-in-Picture (PiP) e perfil WebClip em tela cheia.</p>
+          </article>
+        </div>
+
+        <div class="coming-soon-panel glass-panel reveal">
+          <div class="coming-head">
+            <span class="status-pill status-soon">✦ Chegando em breve nas Smart TVs</span>
+            <h3>Expandindo para as duas maiores plataformas de Smart TV</h3>
+            <p>Já estamos trabalhando para levar o AshOS TV nativamente, sem precisar de aparelhos extras, direto para a loja da sua TV:</p>
+          </div>
+
+          <div class="coming-grid">
+            <article class="glass-card coming-card">
+              <div class="coming-card-top">
+                <div class="coming-brand roku-brand">ROKU</div>
+                <span class="mono soon-tag">EM BREVE</span>
+              </div>
+              <h4>Roku TV (Roku OS)</h4>
+              <p>
+                Versão nativa dedicada para TVs e aparelhos <strong>Roku TV</strong> com sistema <strong>Roku OS</strong> (Philco, AOC, Semp, TCL, Express e mais), mantendo toda a velocidade, dublado em 1º lugar e controle remoto simples.
+              </p>
+            </article>
+
+            <article class="glass-card coming-card">
+              <div class="coming-card-top">
+                <div class="coming-brand tizen-brand">TIZEN OS</div>
+                <span class="mono soon-tag">EM BREVE</span>
+              </div>
+              <h4>Samsung Smart TV (Tizen OS / One UI Tizen)</h4>
+              <p>
+                Versão nativa para Smart TVs Samsung com sistema <strong>Tizen OS</strong> (incluindo a interface <strong>One UI Tizen</strong>), levando filmes, séries, canais ao vivo e YouTube sem anúncios direto na sua TV Samsung.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CENTRAL DE DOWNLOAD + QR CODE + CÓDIGO ASH7X4 ==================== -->
+    <section class="section" id="baixar">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">BAIXE AGORA &amp; COMECE EM SEGUNDOS</span>
+          <h2>Aponte o celular para o QR Code e entre com o código <span class="mono text-gradient">ASH7X4</span>.</h2>
+          <p class="section-sub">
+            Escolha seu aparelho abaixo. No celular Android, basta abrir a câmera e apontar para o QR Code para baixar na hora.
+          </p>
+        </div>
+
+        <div class="download-layout reveal">
+          <aside class="glass-panel ticket-panel">
+            <div class="ticket-glow" aria-hidden="true"></div>
+            <span class="ticket-kicker mono">PASSE DE ACESSO LIBERADO</span>
+            <h3>Entre usando este código</h3>
+            <p class="ticket-desc">
+              Assim que abrir o AshOS TV no seu celular, TV ou computador, toque em <strong>Entrar com código</strong> e digite:
+            </p>
+
+            <div class="ticket-code-box">
+              <span class="ticket-code mono">ASH7X4</span>
+              <button type="button" class="btn btn-primary copy-code-btn" data-code="ASH7X4">
+                <svg class="icon-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <rect x="7" y="7" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M13 5V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13H5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                <span class="copy-label">Copiar código ASH7X4</span>
+              </button>
+            </div>
+
+            <div class="ticket-preview">
+              <img src="assets/screens/filmes-grade.png" alt="Catálogo liberado ao entrar com o código ASH7X4" loading="lazy">
+              <span>Tudo desbloqueado ao entrar com <strong class="mono">ASH7X4</strong></span>
+            </div>
+
+            <div class="ticket-steps">
+              <div class="t-step">
+                <span class="t-num mono">01</span>
+                <span>Baixe e instale o app no seu aparelho ao lado.</span>
+              </div>
+              <div class="t-step">
+                <span class="t-num mono">02</span>
+                <span>Abra o AshOS TV e digite o código <strong class="mono">ASH7X4</strong>.</span>
+              </div>
+              <div class="t-step">
+                <span class="t-num mono">03</span>
+                <span>Curta tudo liberado na hora — filmes, séries, animes, TV ao vivo e YouTube sem anúncios.</span>
+              </div>
+            </div>
+          </aside>
+
+          <div class="glass-panel dl-panel">
+            <div class="dl-tabs" role="tablist" aria-label="Escolha o aparelho para baixar">
+              <button type="button" class="dl-tab is-active" role="tab" aria-selected="true" data-platform="android">Android Celular</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="firestick">Fire TV Stick</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="androidtv">Android TV</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="windows">Windows (7 ao 11)</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="iphone">iPhone (iOS)</button>
+            </div>
+
+            <div class="dl-body">
+              <div class="dl-info">
+                <div class="dl-meta">
+                  <span class="status-pill status-live" id="dlBadge">● Versão 2.0.1</span>
+                  <span class="mono dl-size" id="dlSize">APK Universal</span>
+                </div>
+
+                <h3 id="dlTitle">AshOS TV para Celular &amp; Tablet Android</h3>
+                <p class="dl-desc" id="dlDesc">
+                  Baixe direto no celular ou aponte a câmera para o QR Code ao lado. Compatível com qualquer celular ou tablet Android.
+                </p>
+
+                <div class="dl-actions">
+                  <a
+                    id="dlMainBtn"
+                    class="btn btn-primary btn-lg"
+                    href="https://github.com/zackdartdev/ashos-tv/releases/download/v2.0.1/AshOS-TV-Android.apk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span id="dlMainBtnLabel">Baixar AshOS TV Android (.apk)</span>
+                  </a>
+                </div>
+
+                <div class="dl-variants" id="dlVariants"></div>
+
+                <div class="dl-howto">
+                  <span class="mono howto-label">COMO INSTALAR</span>
+                  <ol id="dlSteps">
+                    <li>Aponte a câmera do celular para o QR Code ou toque em <strong>Baixar AshOS TV Android</strong>.</li>
+                    <li>Abra o arquivo <code>AshOS-TV-Android.apk</code> e permita <strong>Instalar apps desconhecidos</strong>.</li>
+                    <li>Abra o AshOS TV, entre com o código <strong class="mono">ASH7X4</strong> e comece a assistir.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="qr-card">
+                <div class="qr-frame">
+                  <img
+                    id="dlQrImg"
+                    src="assets/qr/qr-android.svg"
+                    alt="QR Code para baixar o AshOS TV"
+                    width="220"
+                    height="220"
+                  >
+                </div>
+                <strong class="qr-title" id="dlQrTitle">Aponte a câmera do celular</strong>
+                <p class="qr-sub" id="dlQrSub">Baixa o instalador oficial do Android direto no telefone.</p>
+                <div class="qr-switch" id="qrSwitch">
+                  <button type="button" class="qr-pill is-active" data-qr="assets/qr/qr-android.svg" data-qr-title="Android Universal" data-qr-sub="Funciona em qualquer celular, tablet ou TV Android.">Universal</button>
+                  <button type="button" class="qr-pill" data-qr="assets/qr/qr-arm64.svg" data-qr-title="Android ARM64 Leve" data-qr-sub="Compilação otimizada 64 bits para celulares novos.">ARM64 Leve</button>
+                  <button type="button" class="qr-pill" data-qr="assets/qr/qr-firestick.svg" data-qr-title="Fire TV Stick (32 bits)" data-qr-sub="Versão leve 32 bits para Fire Stick e Smart TV.">Fire Stick</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="section" id="faq">
+      <div class="container faq-container">
+        <div class="section-head reveal">
+          <span class="kicker mono">DÚVIDAS RÁPIDAS</span>
+          <h2>Perguntas frequentes</h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>Como funciona o código ASH7X4?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Baixe e abra o AshOS TV em qualquer aparelho compatível, escolha a opção de entrar com código e digite <strong class="mono">ASH7X4</strong>. Na hora seu acesso completo é liberado para assistir a filmes, séries, animes, TV ao vivo e YouTube sem anúncios.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>O YouTube dentro do AshOS TV realmente não tem anúncios?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Sim! Não passa propaganda antes do vídeo, no meio e nem ao pular. Basta abrir o menu do seu perfil (nos três pontinhos <strong>•••</strong> no celular/iPhone ou clicando no avatar do seu perfil no topo da TV) e tocar em <strong>YouTube</strong>. Ele fica oculto apenas no Perfil Infantil por segurança.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>Vai funcionar na minha Roku TV ou TV Samsung (Tizen OS)?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Estamos desenvolvendo as versões nativas para <strong>Roku TV (Roku OS)</strong> e <strong>Samsung Smart TV (Tizen OS / One UI Tizen)</strong>, que estão chegando em breve! Enquanto isso, se você já usa um Fire TV Stick, Android TV, celular Android, iPhone ou PC com Windows conectado na TV, já pode usar hoje mesmo.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>O Perfil Infantil é realmente seguro para crianças?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Sim. O Modo Infantil mostra somente desenhos e conteúdos apropriados, oculta canais e conteúdos fora da faixa etária, não exibe o YouTube e mantém progresso separado por perfil.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>Funciona em computador Windows antigo, como Windows 7?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Sim! A versão <code>2.1.2</code> do AshOS TV para Windows possui compilação universal e portátil 32 e 64 bits compatível desde o <strong>Windows 7</strong> até o <strong>Windows 11</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-card glass-panel reveal">
+          <div class="support-copy">
+            <span class="kicker mono">PROJETO INDIVIDUAL INDEPENDENTE</span>
+            <h3>Curtiu o AshOS TV? Apoie o desenvolvimento</h3>
+            <p>
+              Este é um projeto individual feito de forma independente, com <strong>1.000 acessos individuais</strong> liberados pelo código <strong class="mono">ASH7X4</strong> — e tem <strong>mais novidades chegando</strong>! Se gostar, basta escanear o QR Code ao lado no app do seu banco e enviar qualquer quantia via Pix.
+            </p>
+          </div>
+          <div class="support-qr">
+            <div class="qr-frame qr-frame-sm">
+              <img src="assets/qr/qr-pix.svg" alt="QR Code Pix para apoiar o projeto AshOS TV" width="160" height="160" loading="lazy">
+            </div>
+            <span class="mono support-qr-label">Escaneie no app do banco</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/favicon.svg" alt="" width="28" height="28">
+        <div>
+          <strong>AshOS TV</strong>
+          <span>v2.0.1 Android, Fire Stick &amp; iPhone · v2.1.2 Windows</span>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#telas-reais">Telas Reais</a>
+        <a href="#youtube">YouTube sem anúncios</a>
+        <a href="#baixar">Baixar + QR Code</a>
+        <a href="app/index.html" target="_blank">AshOS Web Player</a>
+      </div>
+
+      <p class="footer-credit">AshOS Cinema Ecosystem · Edição Brasil</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox para Telas Reais -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Visualização em tela cheia da interface do AshOS TV">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Fechar tela cheia">✕</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Tela anterior">‹</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="assets/screens/inicio.png" alt="Tela inicial real do AshOS TV">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima tela">›</button>
+  </div>
+
+  <!-- Toast de Feedback -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span class="toast-dot" aria-hidden="true"></span>
+    <span id="toastText">Código ASH7X4 copiado!</span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

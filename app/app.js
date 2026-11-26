@@ -186,16 +186,16 @@
     } catch (_) {}
   }
 
-  /* ---------- Servidores & Trackers ---------- */
+  /* ---------- Servidores & Trackers (Validados HTTP 200) ---------- */
   const STREAM_SERVERS = [
-    { name: "Torrentio BR", base: "https://torrentio.strem.fun/providers=comando,bludv,micoleaodublado%7Csort=seeders%7Clanguage=portuguese", fast: true },
-    { name: "Brazuca", base: "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club", fast: true },
+    { name: "Torrentio BR", base: "https://torrentio.strem.fun/providers=comando,bludv,micoleaodublado|sort=seeders|language=portuguese", fast: true },
+    { name: "Torrentio PT", base: "https://torrentio.strem.fun/sort=seeders|language=portuguese", fast: true },
+    { name: "Peerflix", base: "https://peerflix.mov", fast: true },
+    { name: "TorrentsDB", base: "https://torrentsdb.com", fast: true },
+    { name: "Torrentio 1080p", base: "https://torrentio.strem.fun/qualityfilter=scr,cam|sort=seeders", fast: true },
+    { name: "Pleiades", base: "https://pleiadesstream.duckdns.org/addon/torrents", fast: true },
     { name: "AnimesFHD", base: "https://animesfhd.net/stremio", fast: true },
-    { name: "Brasil Addon", base: "https://27a5b2bfe3c0-stremio-brazilian-addon.baby-beamup.club", fast: true },
-    { name: "Torrentio PT", base: "https://torrentio.strem.fun/sort=seeders%7Clanguage=portuguese", fast: true },
-    { name: "Pleiades", base: "https://pleiadesstream.duckdns.org/addon/torrents", fast: false },
-    { name: "TorrentsDB", base: "https://torrentsdb.com", fast: false },
-    { name: "BeTor BR", base: "https://stremio-betor.onrender.com", fast: false }
+    { name: "Brazuca", base: "https://94c8cb9f702d-brazuca-torrents.baby-beamup.club", fast: false }
   ];
 
   const BEST_TRACKERS = [
@@ -219,7 +219,7 @@
   const PT_REGEX = /portugu|dublad|dual|pt[ ._-]*br|brazil|nacional|🇧🇷|animesfhd|\b(bludv|comando|lapumia|wolverdon|vac|memp|micoleao|micoleaodublado|vamoslat|redecanais|animesbr|animesonline|betteranime|anroll)\b/i;
 
   async function httpGetText(url, timeoutMs) {
-    const tmo = timeoutMs || 4500;
+    const tmo = timeoutMs || 5500;
     try {
       const ctrl = new AbortController();
       const timer = setTimeout(() => ctrl.abort(), tmo);
@@ -227,7 +227,7 @@
       clearTimeout(timer);
       if (res.ok) return await res.text();
     } catch (_) {}
-    if (hasNative) {
+    if (hasNative && Native.fetchUrl) {
       return await new Promise((resolve) => {
         setTimeout(() => {
           try { resolve(Native.fetchUrl(url) || ""); }
@@ -973,7 +973,7 @@
       Promise.allSettled(tasks),
       new Promise((resolve) => {
         fastResolveFn = resolve;
-        setTimeout(resolve, 2400);
+        setTimeout(resolve, 4200);
       })
     ]);
 

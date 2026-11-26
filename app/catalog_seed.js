@@ -5,8 +5,8 @@ window.PULSE_SEED = {
   authSalt: "PULSE_V3_GATE:",
   authHash: "65ae8b089e6720706372d9af292bfc7bd13f18680a0edb4a81da6e4e63b46a52",
   supabase: {
-    url: "",
-    anonKey: ""
+    url: "https://syfhhzukheucdtxukucs.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5ZmhoenVraGV1Y2R0eHVrdWNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU3MTcxOTEsImV4cCI6MjExMTI5MzE5MX0.7_ML7o23FnMnJazlL5M_I1W3SGEvMe9e_xoeOYtYWKY"
   },
 
   platforms: [

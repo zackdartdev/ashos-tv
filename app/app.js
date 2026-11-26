@@ -406,6 +406,10 @@
       }
       routeAuthState();
       verifyActiveSupabaseSession();
+      const sb = getSupabaseConfig();
+      if (window.ZACK_BYTEPASS && sb.enabled) {
+        window.ZACK_BYTEPASS.verifyWithSupabase(sb.url, sb.anonKey, getDeviceModelLabel());
+      }
     }, 1180);
   }
 

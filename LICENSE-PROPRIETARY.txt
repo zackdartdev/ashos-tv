@@ -1,0 +1,15 @@
+AVISO LEGAL — PROPRIEDADE ÚNICA E EXCLUSIVA DA ZACK STUDIOS
+===========================================================
+
+© 2026 Zack Studios. Todos os direitos reservados.
+
+O aplicativo PulseTV, seu site oficial, código-fonte, design system, identidade visual,
+arquitetura e assinatura criptográfica Zack Bytepass™ (ZBP-300-EA0202DC) são de
+propriedade única e exclusiva da Zack Studios.
+
+É estritamente proibida a cópia, clonagem, modificação, descompilação, engenharia reversa,
+re-empacotamento ou redistribuição total ou parcial deste software ou de sua interface sem
+autorização expressa e por escrito da Zack Studios.
+
+Qualquer tentativa de clonagem ou adulteração é bloqueada automaticamente pela proteção
+Zack Bytepass™ e registrada para fins de auditoria de propriedade intelectual.

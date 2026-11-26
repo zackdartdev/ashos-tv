@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PulseTV — Todos os streamings, TV ao vivo e YouTube sem anúncios em um só cinema</title>
+  <meta name="description" content="Filmes em 4K, séries, animes dublados, desenhos, TV ao vivo e YouTube Premium sem propaganda — reunidos em português no celular Android, Fire Stick, Android TV, iPhone e Windows. Entre com o código PLS9K4.">
+  <meta name="theme-color" content="#050508">
+  <meta property="og:title" content="PulseTV v3.0 — Todo o streaming em um só cinema">
+  <meta property="og:description" content="Catálogo expandido 4K, perfis estilo Netflix, motor Fast-Path sem delay e YouTube sem anúncios. Entre usando o código exclusivo PLS9K4.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/icon-pulsetv.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Fundo cinematográfico Pulse Prism -->
+  <div class="cinema-backdrop" aria-hidden="true">
+    <canvas id="prismCanvas"></canvas>
+    <div class="aurora aurora-amber"></div>
+    <div class="aurora aurora-coral"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- Navbar Spatial Glass Flutuante -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#topo" aria-label="PulseTV — início">
+        <img src="assets/icons/favicon.svg" alt="" width="34" height="34" class="brand-icon">
+        <span class="brand-text">Pulse<strong>TV</strong></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#streamings">Plataformas</a>
+        <a href="#telas-reais">Telas Reais</a>
+        <a href="#youtube" class="nav-yt">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          YouTube Grátis
+        </a>
+        <a href="#funcoes">Funções</a>
+        <a href="#dispositivos">Aparelhos</a>
+        <a href="#baixar">Baixar</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="code-pill copy-code-btn" data-code="PLS9K4" aria-label="Copiar código de acesso PLS9K4">
+          <span class="code-pill-label">Código</span>
+          <strong class="mono">PLS9K4</strong>
+          <svg class="icon-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <rect x="7" y="7" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M13 5V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13H5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <a class="btn btn-glass btn-sm" href="app/index.html" target="_blank">Abrir Web App</a>
+        <a class="btn btn-primary btn-sm" href="#baixar">Baixar Grátis</a>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Abrir menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-drawer" id="mobileDrawer" hidden>
+      <a href="#streamings">Plataformas reunidas</a>
+      <a href="#telas-reais">Telas reais da interface</a>
+      <a href="#youtube">YouTube Premium sem anúncios</a>
+      <a href="#funcoes">Todas as funções v3.0</a>
+      <a href="#dispositivos">Aparelhos e Em Breve</a>
+      <a href="app/index.html">Abrir PulseTV direto no Navegador</a>
+      <a href="#baixar" class="drawer-cta">Baixar + QR Code + Código PLS9K4</a>
+    </div>
+  </header>
+
+  <main id="topo">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            <span class="mono">v3.0.0 ANDROID, TV, FIRE STICK, iOS &amp; WINDOWS · ZERO ANÚNCIOS</span>
+          </div>
+
+          <h1 class="hero-title">
+            Todos os streamings.<br>
+            YouTube sem anúncios.<br>
+            <em class="serif-accent">Um só cinema.</em>
+          </h1>
+
+          <p class="hero-subtitle">
+            Catálogo expandido com mais de <strong>1.500 filmes, séries, animes dublados, sagas e TV ao vivo</strong> + <strong>YouTube Premium integrado grátis</strong> — com motor Fast-Path sem delay, perfis estilo Netflix e adaptação nativa para celular e Smart TV.
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#baixar">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Baixar Agora + QR Code
+            </a>
+            <a class="btn btn-glass btn-lg" href="#telas-reais">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="12" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 20h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Ver Telas Reais
+            </a>
+          </div>
+
+          <!-- Cartão VIP do Código de Entrada Exclusivo -->
+          <div class="vip-pass">
+            <div class="vip-pass-left">
+              <span class="vip-label">Entre usando o código exclusivo</span>
+              <div class="vip-code-row">
+                <span class="vip-code mono" id="heroCodeText">PLS9K4</span>
+                <span class="vip-badge">1.000 acessos individuais</span>
+              </div>
+              <p class="vip-note">Autenticação protegida: digite esse código na tela de login ao abrir o PulseTV.</p>
+            </div>
+            <button type="button" class="btn btn-glass copy-code-btn" data-code="PLS9K4">
+              <svg class="icon-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <rect x="7" y="7" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M13 5V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13H5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <span class="copy-label">Copiar código</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Palco Visual Hero com Print Real da Nova Interface PulseTV -->
+        <div class="hero-stage">
+          <div class="stage-ambilight" id="heroAmbilight" aria-hidden="true"></div>
+          <div class="tv-frame hero-tv-frame">
+            <div class="tv-bezel">
+              <div class="tv-screen">
+                <img
+                  id="heroPreviewImg"
+                  src="assets/screens/inicio.png"
+                  alt="Tela inicial real do PulseTV com sidebar espacial, destaque em 4K e fileiras 16:9"
+                  width="1440"
+                  height="810"
+                  fetchpriority="high"
+                >
+                <div class="tv-glare" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="tv-stand" aria-hidden="true"></div>
+          </div>
+
+          <div class="stage-hud">
+            <div class="hud-pills" role="tablist" aria-label="Prévia rápida da interface">
+              <button type="button" class="hud-pill is-active" data-hero-screen="assets/screens/inicio.png">Início</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/perfis-netflix.png">Perfis Netflix</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/filmes-grade.png">Filmes</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/series.png">Séries</button>
+              <button type="button" class="hud-pill" data-hero-screen="assets/screens/detalhes.png">Detalhes</button>
+            </div>
+            <div class="hud-tags">
+              <span class="hud-tag">Fast-Path ~0,9s</span>
+              <span class="hud-tag">YouTube 0 anúncios</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de métricas reais -->
+      <div class="container metrics-strip reveal">
+        <div class="metric-item">
+          <strong class="metric-value">~0,9 s</strong>
+          <span>motor Fast-Path p/ tocar</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value">100%</strong>
+          <span>dublado PT-BR no topo</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value">Zero</strong>
+          <span>anúncios no app e no YouTube</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value">6 perfis</strong>
+          <span>estilo Netflix com PIN &amp; Kids</span>
+        </div>
+        <div class="metric-item">
+          <strong class="metric-value mono">PLS9K4</strong>
+          <span>código exclusivo de login</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TODAS AS PLATAFORMAS DE STREAMING ==================== -->
+    <section class="section" id="streamings">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">CATÁLOGO UNIFICADO &amp; AMPLIADO</span>
+          <h2>Conteúdos de todas as plataformas de streaming, em um único lugar.</h2>
+          <p class="section-sub">
+            Chega de assinar oito serviços diferentes ou ficar procurando em qual app está o filme da noite. O PulseTV reúne lançamentos de cinema, clássicos, séries completas, 38 sagas, animes dublados e canais ao vivo em uma interface Spatial Glass impecável.
+          </p>
+        </div>
+
+        <div class="platforms-marquee glass-panel reveal">
+          <div class="platforms-grid">
+            <div class="platform-chip"><span class="p-dot p-red"></span>Netflix</div>
+            <div class="platform-chip"><span class="p-dot p-blue"></span>Prime Video</div>
+            <div class="platform-chip"><span class="p-dot p-cyan"></span>Disney+</div>
+            <div class="platform-chip"><span class="p-dot p-indigo"></span>Max</div>
+            <div class="platform-chip"><span class="p-dot p-silver"></span>Apple TV+</div>
+            <div class="platform-chip"><span class="p-dot p-sky"></span>Paramount+</div>
+            <div class="platform-chip"><span class="p-dot p-orange"></span>Crunchyroll</div>
+            <div class="platform-chip"><span class="p-dot p-coral"></span>Globoplay</div>
+            <div class="platform-chip"><span class="p-dot p-amber"></span>Star+</div>
+            <div class="platform-chip"><span class="p-dot p-green"></span>TV ao Vivo</div>
+            <div class="platform-chip platform-chip-yt"><span class="p-dot p-yt"></span>YouTube sem anúncios</div>
+          </div>
+        </div>
+
+        <div class="compare-grid reveal">
+          <article class="glass-card compare-old">
+            <div class="compare-head">
+              <span class="compare-tag compare-tag-muted">Como era antes</span>
+              <h3>Vários apps, várias contas, várias faturas</h3>
+            </div>
+            <ul class="compare-list">
+              <li>Pagar mensalidade separada para filmes, séries, desenhos e animes</li>
+              <li>Perder tempo procurando em qual catálogo está o que você quer ver</li>
+              <li>Aturar propaganda no meio dos vídeos do YouTube toda hora</li>
+              <li>Esperar vários segundos de carregamento ou sofrer com interface cortada no celular</li>
+            </ul>
+          </article>
+
+          <article class="glass-card compare-lume spotlight-card">
+            <div class="compare-head">
+              <span class="compare-tag compare-tag-lume">Com o PulseTV v3.0</span>
+              <h3>Tudo reunido, em português, rápido e sem anúncio</h3>
+            </div>
+            <ul class="compare-list">
+              <li>Catálogo expandido com centenas de filmes extras, séries, sagas e animes em um só lugar</li>
+              <li>Motor Fast-Path + TorrServer pré-aquecido: áudio PT-BR 1080p/4K com latência mínima</li>
+              <li>Tela de Login exclusiva + Perfis estilo Netflix (“Quem está assistindo?”) com PIN e Kids</li>
+              <li>Design adaptado sob medida para celular Android (zero vazamentos), Smart TV, iPhone e PC</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VITRINE REAL DA INTERFACE ==================== -->
+    <section class="section" id="telas-reais">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">PRINTS REAIS · SEM MONTAGEM</span>
+          <h2>Veja por dentro. Interface PulseTV v3.0 em ação.</h2>
+          <p class="section-sub">
+            Paleta preto OLED, vidro espacial, branco puro e vermelho cinema — desde a autenticação exclusiva e seleção de perfis estilo Netflix até o catálogo e detalhes em português.
+          </p>
+        </div>
+
+        <div class="showcase-shell glass-panel reveal">
+          <div class="showcase-tabs" role="tablist" aria-label="Telas reais do PulseTV">
+            <button type="button" class="showcase-tab is-active" role="tab" aria-selected="true" data-index="0">
+              <span class="tab-num mono">01</span>
+              <span class="tab-title">Início &amp; Destaques</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="1">
+              <span class="tab-num mono">02</span>
+              <span class="tab-title">Filmes · Catálogo</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="2">
+              <span class="tab-num mono">03</span>
+              <span class="tab-title">Perfis Estilo Netflix</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="3">
+              <span class="tab-num mono">04</span>
+              <span class="tab-title">Séries</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="4">
+              <span class="tab-num mono">05</span>
+              <span class="tab-title">Animes &amp; Kids</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="5">
+              <span class="tab-num mono">06</span>
+              <span class="tab-title">Login Exclusivo</span>
+            </button>
+            <button type="button" class="showcase-tab" role="tab" aria-selected="false" data-index="6">
+              <span class="tab-num mono">07</span>
+              <span class="tab-title">Detalhes 4K</span>
+            </button>
+          </div>
+
+          <div class="showcase-stage">
+            <div class="showcase-ambilight" id="showcaseAmbilight" aria-hidden="true"></div>
+            <figure class="showcase-figure">
+              <div class="tv-bezel tv-bezel-showcase">
+                <div class="tv-screen">
+                  <img
+                    id="showcaseImg"
+                    src="assets/screens/inicio.png"
+                    alt="Tela inicial real do PulseTV com sidebar espacial e destaques"
+                    width="1440"
+                    height="810"
+                    loading="lazy"
+                  >
+                </div>
+              </div>
+              <figcaption class="showcase-caption">
+                <div>
+                  <span class="caption-badge mono" id="showcaseBadge">TELA REAL 01 / 07</span>
+                  <h3 id="showcaseTitle">Início &amp; Destaques Cinematográficos</h3>
+                  <p id="showcaseDesc">Sidebar espacial em vidro líquido, busca com animação em tempo real, banner 4K e fileira Continuar Assistindo com barra vermelha.</p>
+                </div>
+                <button type="button" class="btn btn-glass" id="openLightboxBtn">
+                  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Ampliar tela cheia
+                </button>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="screens-mosaic" aria-label="Galeria de telas reais do PulseTV">
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="1">
+              <div class="mosaic-media">
+                <img src="assets/screens/filmes-grade.png" alt="Catálogo expandido de Filmes no PulseTV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">FILMES · CATÁLOGO</span>
+                <strong>Centenas de filmes com filtros e paginação fluida</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="2">
+              <div class="mosaic-media">
+                <img src="assets/screens/perfis-netflix.png" alt="Tela Quem está assistindo? estilo Netflix no PulseTV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">QUEM ESTÁ ASSISTINDO?</span>
+                <strong>Perfis estilo Netflix com avatares, PIN e Kids</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="3">
+              <div class="mosaic-media">
+                <img src="assets/screens/series.png" alt="Tela de Séries em alta no PulseTV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">SÉRIES</span>
+                <strong>The Witcher, Peaky Blinders, Round 6 e temporadas</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="4">
+              <div class="mosaic-media">
+                <img src="assets/screens/desenhos.png" alt="Animes Dublados PT-BR e Desenhos no PulseTV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">ANIMES &amp; KIDS</span>
+                <strong>One Piece, Solo Leveling, Dan Da Dan e desenhos PT-BR</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="5">
+              <div class="mosaic-media">
+                <img src="assets/screens/login-auth.png" alt="Tela de Login exclusivo por código SHA-256 no PulseTV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">LOGIN PROTEGIDO</span>
+                <strong>Acesso liberado exclusivamente com o código PLS9K4</strong>
+              </div>
+            </button>
+
+            <button type="button" class="mosaic-card glass-card" data-mosaic-index="6">
+              <div class="mosaic-media">
+                <img src="assets/screens/detalhes.png" alt="Tela de detalhes de filme com sinopse PT-BR no PulseTV" loading="lazy">
+              </div>
+              <div class="mosaic-meta">
+                <span class="mono mosaic-tag">DETALHES DO TÍTULO</span>
+                <strong>Sinopse em PT-BR, elenco e Fast-Path em 1 clique</strong>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BÔNUS: YOUTUBE PREMIUM SEM ANÚNCIOS ==================== -->
+    <section class="section" id="youtube">
+      <div class="container">
+        <div class="yt-showcase glass-panel reveal">
+          <div class="yt-glow" aria-hidden="true"></div>
+          <div class="yt-grid">
+            <div class="yt-copy">
+              <div class="yt-badge">
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.14 5.6 12 5.6 12 5.6s-6.14 0-7.86.46A2.75 2.75 0 0 0 2.2 8.001C1.74 9.72 1.74 12 1.74 12s0 2.28.46 3.999a2.75 2.75 0 0 0 1.94 1.94C5.86 18.4 12 18.4 12 18.4s6.14 0 7.86-.46a2.75 2.75 0 0 0 1.94-1.94C22.26 14.28 22.26 12 22.26 12s0-2.28-.46-3.999ZM9.9 14.9V9.1l5.2 2.9-5.2 2.9Z"/>
+                </svg>
+                <span>BÔNUS INCLUSO NO PULSETV · ZERO PROPAGANDA</span>
+              </div>
+
+              <h2>YouTube Premium de graça, <em class="serif-accent">sem anúncio algum.</em></h2>
+
+              <p class="yt-lead">
+                Dentro do próprio PulseTV você já ganha um YouTube completo integrado de forma limpa — <strong>sem nenhum anúncio antes, durante ou depois dos vídeos</strong>, e sem pagar assinatura extra.
+              </p>
+
+              <div class="yt-perks">
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Zero propagandas </strong>
+                    <span>Assista a músicas, podcasts, aulas e canais inteiros sem interrupções comerciais.</span>
+                  </div>
+                </div>
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Já incluso no seu login</strong>
+                    <span>Entrou com o código <span class="mono">PLS9K4</span>, já está liberado sem custo extra.</span>
+                  </div>
+                </div>
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Na TV, no celular e no PC</strong>
+                    <span>Funciona no Fire Stick, Android, Android TV, iPhone e Windows.</span>
+                  </div>
+                </div>
+                <div class="yt-perk">
+                  <span class="perk-check">✓</span>
+                  <div>
+                    <strong>Protegido no Modo Kids</strong>
+                    <span>Oculto automaticamente no perfil Infantil para segurança total das crianças.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guia Interativo de Acesso ao YouTube -->
+            <div class="yt-guide glass-card">
+              <div class="yt-guide-head">
+                <div>
+                  <span class="mono guide-kicker">ONDE ENCONTRAR NO APP</span>
+                  <h3>Como abrir em 3 toques</h3>
+                </div>
+                <div class="yt-mode-switch" role="tablist" aria-label="Escolha o aparelho para ver o guia">
+                  <button type="button" class="yt-mode-btn is-active" data-yt-mode="mobile" role="tab" aria-selected="true">Celular / iPhone</button>
+                  <button type="button" class="yt-mode-btn" data-yt-mode="tv" role="tab" aria-selected="false">TV / Fire Stick</button>
+                </div>
+              </div>
+
+              <div class="yt-mini-ui" id="ytMiniUi">
+                <div class="mini-ui-bar">
+                  <span class="mini-logo">Pulse<strong>TV</strong></span>
+                  <div class="mini-ui-right">
+                    <span class="mini-pill" id="miniUiSearch">Buscar</span>
+                    <span class="mini-pill mini-pill-highlight" id="miniUiTrigger">Menu › Central</span>
+                  </div>
+                </div>
+                <div class="mini-ui-menu">
+                  <div class="mini-menu-item">Quem está assistindo?</div>
+                  <div class="mini-menu-item">Minha Lista</div>
+                  <div class="mini-menu-item mini-menu-yt">
+                    <span class="mini-yt-dot"></span>
+                    <span>YouTube</span>
+                    <span class="mini-yt-tag">SEM ANÚNCIOS</span>
+                  </div>
+                  <div class="mini-menu-item">Ajustes</div>
+                </div>
+              </div>
+
+              <ol class="yt-steps">
+                <li>
+                  <span class="step-num mono">1</span>
+                  <div>
+                    <strong>Abra o PulseTV</strong>
+                    <p>Faça login usando o código exclusivo <strong class="mono">PLS9K4</strong> e escolha seu perfil.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="step-num mono">2</span>
+                  <div>
+                    <strong id="ytStep2Title">Toque em Menu na barra inferior</strong>
+                    <p id="ytStep2Desc">No celular Android e no iPhone, toque em Menu na barra inferior; na TV, use a barra lateral esquerda.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="step-num mono">3</span>
+                  <div>
+                    <strong>Toque em YouTube e aproveite</strong>
+                    <p>Vídeos livres, busca completa e reprodução limpa — zero propaganda.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BENTO GRID — TODAS AS FUNÇÕES ==================== -->
+    <section class="section" id="funcoes">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">ARQUITETURA PULSETV v3.0</span>
+          <h2>Cada detalhe pensado para você só apertar play.</h2>
+          <p class="section-sub">
+            Da abertura animada até a corrida de servidores Fast-Path e tela de perfis estilo Netflix — conheça os diferenciais do PulseTV.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="glass-card bento-card bento-wide spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 0c2.5 2.4 3.8 5.4 3.8 9s-1.3 6.6-3.8 9m0-18c-2.5 2.4-3.8 5.4-3.8 9s1.3 6.6 3.8 9M3.6 9.5h16.8M3.6 14.5h16.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">IDIOMA &amp; QUALIDADE</span>
+            <h3>Português do Brasil sempre em 1º lugar — inclusive em Animes</h3>
+            <p>
+              Dublado e áudio duplo aparecem no topo, sinopses vêm traduzidas automaticamente e você tem qualidade Full HD 1080p e 4K HDR priorizadas. Nos animes, integração direta com catálogo PT-BR e Kitsu garante áudio dublado no primeiro clique.
+            </p>
+            <div class="bento-chips">
+              <span>1080p &amp; 4K HDR</span>
+              <span>Animes Dublados</span>
+              <span>Sinopses em PT-BR</span>
+            </div>
+          </article>
+
+          <article class="glass-card bento-card bento-wide spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/>
+                <path d="m10 9.5 5 2.5-5 2.5v-5Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">PLAYER DE CINEMA MEDIA3</span>
+            <h3>Controle absoluto sem sair do filme</h3>
+            <p>
+              <strong>Smart Auto-Sub:</strong> áudio em português desliga a legenda; áudio original liga a legenda PT automaticamente. Ajuste sincronia em <code>±0,5 s</code>, velocidade de <code>0.75×</code> até <code>2.0×</code>, troca rápida de fonte, áudio noturno, timer para dormir, trava de tela, toque duplo <code>±15 s</code> e Picture-in-Picture (PiP).
+            </p>
+            <div class="bento-chips">
+              <span>Smart Auto-Sub</span>
+              <span>Sincronia ±0,5 s</span>
+              <span>0.75× a 2.0×</span>
+              <span>Áudio Noturno</span>
+            </div>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M13 2 4 14h7l-1 8 10-12h-7l0-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">FAST-PATH ZERO DELAY</span>
+            <h3>Abre e já toca (~0,9 s)</h3>
+            <p>
+              Corrida assíncrona inteligente entre provedores PT-BR + TorrServer com <code>PreloadCache=0</code> e pré-aquecimento silencioso ao abrir os detalhes.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                <path d="M7.8 7.8a6 6 0 0 0 0 8.4m8.4-8.4a6 6 0 0 1 0 8.4M4.9 4.9a10 10 0 0 0 0 14.2m14.2-14.2a10 10 0 0 1 0 14.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">CANAL AO VIVO</span>
+            <h3>250+ Canais ao Vivo + Guia</h3>
+            <p>
+              Canais brasileiros e internacionais ao vivo com filtro rápido por categoria e troca instantânea de transmissão.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM8 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-2.3 0-4.5 1.1-5.2 3.2-.2.5.2.8.7.8h9c.5 0 .9-.3.7-.8-.7-2.1-2.9-3.2-5.2-3.2ZM8 14.5c-2.2 0-4.2 1-4.8 3-.2.4.1.5.5.5h5.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">ESTILO NETFLIX</span>
+            <h3>“Quem está assistindo?” + PIN</h3>
+            <p>
+              Até 6 perfis com avatares ilustrados, gerenciador completo, proteção por PIN de 4 dígitos e Modo Infantil blindado.
+            </p>
+          </article>
+
+          <article class="glass-card bento-card spotlight-card reveal">
+            <div class="bento-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="7" y="2" width="10" height="20" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="12" cy="17.5" r="1" fill="currentColor"/>
+                <path d="M10 6h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="bento-tag mono">MOBILE RESPONSIVO</span>
+            <h3>APK de Celular Sem Vazamentos</h3>
+            <p>
+              Barra inferior espacial em vidro para uma mão, alvos de toque de 48px, ajuste dinâmico de teclado e zero cortes em qualquer tela.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DISPONIBILIDADE & CHEGANDO EM BREVE ==================== -->
+    <section class="section" id="dispositivos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">MULTIPLATAFORMA REAL</span>
+          <h2>Em todas as telas que você usa hoje — e nas próximas TVs.</h2>
+          <p class="section-sub">
+            Interface desenhada sob medida para cada aparelho: controle remoto na TV, barra inferior no celular Android, vidro nativo no iPhone e executável no Windows.
+          </p>
+        </div>
+
+        <div class="devices-grid reveal">
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v3.0.0</span>
+              <span class="mono device-arch">APK</span>
+            </div>
+            <h3>Celular &amp; Tablet Android</h3>
+            <p>Layout mobile 100% adaptado sem vazamentos, barra inferior de 5 abas, toque duplo ±15s e YouTube sem anúncios.</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v3.0.0</span>
+              <span class="mono device-arch">TV</span>
+            </div>
+            <h3>Android TV &amp; Google TV</h3>
+            <p>Sidebar espacial estilo cinema, navegação O(1) a 60fps pelo controle remoto e abertura ultrarrápida em tela cheia.</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v3.0.0</span>
+              <span class="mono device-arch">32-bit</span>
+            </div>
+            <h3>Amazon Fire TV Stick</h3>
+            <p>Compilação leve dedicada armeabi-v7a otimizada para o Fire Stick rodar fluido sem pesar na memória.</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v3.0.0</span>
+              <span class="mono device-arch">Win7–11</span>
+            </div>
+            <h3>Windows (do 7 ao 11)</h3>
+            <p>Janela nativa dedicada com instalador em 1 clique e versões portáteis 32 e 64 bits.</p>
+          </article>
+
+          <article class="glass-card device-card">
+            <div class="device-top">
+              <span class="status-pill status-live">● Disponível · v3.0.0</span>
+              <span class="mono device-arch">iOS</span>
+            </div>
+            <h3>iPhone (iOS)</h3>
+            <p>Visual Spatial Glass para iPhone, suporte a Picture-in-Picture (PiP) e instalação WebClip na Tela de Início.</p>
+          </article>
+        </div>
+
+        <div class="coming-soon-panel glass-panel reveal">
+          <div class="coming-head">
+            <span class="status-pill status-soon">✦ Chegando em breve nas Smart TVs</span>
+            <h3>Expandindo para as duas maiores plataformas de Smart TV</h3>
+            <p>Já estamos trabalhando para levar o PulseTV nativamente direto para a loja da sua TV:</p>
+          </div>
+
+          <div class="coming-grid">
+            <article class="glass-card coming-card">
+              <div class="coming-card-top">
+                <div class="coming-brand roku-brand">ROKU</div>
+                <span class="mono soon-tag">EM BREVE</span>
+              </div>
+              <h4>Roku TV (Roku OS)</h4>
+              <p>
+                Versão nativa dedicada para TVs e aparelhos <strong>Roku TV</strong> com sistema <strong>Roku OS</strong> (Philco, AOC, Semp, TCL, Express e mais), mantendo toda a velocidade e áudio PT-BR em 1º lugar.
+              </p>
+            </article>
+
+            <article class="glass-card coming-card">
+              <div class="coming-card-top">
+                <div class="coming-brand tizen-brand">TIZEN OS</div>
+                <span class="mono soon-tag">EM BREVE</span>
+              </div>
+              <h4>Samsung Smart TV (Tizen OS / One UI Tizen)</h4>
+              <p>
+                Versão nativa para Smart TVs Samsung com sistema <strong>Tizen OS</strong> (incluindo <strong>One UI Tizen</strong>), levando o catálogo completo e YouTube sem anúncios direto na TV Samsung.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CENTRAL DE DOWNLOAD + QR CODE + CÓDIGO PLS9K4 ==================== -->
+    <section class="section" id="baixar">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker mono">BAIXE AGORA &amp; COMECE EM SEGUNDOS</span>
+          <h2>Aponte o celular para o QR Code e entre com o código <span class="mono text-gradient">PLS9K4</span>.</h2>
+          <p class="section-sub">
+            Escolha seu aparelho abaixo. No celular Android, basta abrir a câmera e apontar para o QR Code para baixar o APK v3.0.0 na hora.
+          </p>
+        </div>
+
+        <div class="download-layout reveal">
+          <aside class="glass-panel ticket-panel">
+            <div class="ticket-glow" aria-hidden="true"></div>
+            <span class="ticket-kicker mono">PASSE DE ACESSO EXCLUSIVO</span>
+            <h3>Entre usando este código</h3>
+            <p class="ticket-desc">
+              Ao abrir o PulseTV pela primeira vez, a tela de autenticação solicitará o seu código autorizado. Digite exatamente:
+            </p>
+
+            <div class="ticket-code-box">
+              <span class="ticket-code mono">PLS9K4</span>
+              <button type="button" class="btn btn-primary copy-code-btn" data-code="PLS9K4">
+                <svg class="icon-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <rect x="7" y="7" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M13 5V4.5A1.5 1.5 0 0 0 11.5 3h-7A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13H5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                <span class="copy-label">Copiar código PLS9K4</span>
+              </button>
+            </div>
+
+            <div class="ticket-preview">
+              <img src="assets/screens/perfis-netflix.png" alt="Tela de perfis liberada após login com PLS9K4" loading="lazy">
+              <span>Login validado por SHA-256 com <strong class="mono">PLS9K4</strong></span>
+            </div>
+
+            <div class="ticket-steps">
+              <div class="t-step">
+                <span class="t-num mono">01</span>
+                <span>Baixe e instale o PulseTV v3.0.0 no seu aparelho ao lado.</span>
+              </div>
+              <div class="t-step">
+                <span class="t-num mono">02</span>
+                <span>Na tela de login, digite o código exclusivo <strong class="mono">PLS9K4</strong>.</span>
+              </div>
+              <div class="t-step">
+                <span class="t-num mono">03</span>
+                <span>Escolha seu perfil na tela “Quem está assistindo?” e aproveite!</span>
+              </div>
+            </div>
+          </aside>
+
+          <div class="glass-panel dl-panel">
+            <div class="dl-tabs" role="tablist" aria-label="Escolha o aparelho para baixar">
+              <button type="button" class="dl-tab is-active" role="tab" aria-selected="true" data-platform="android">Android Celular</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="firestick">Fire TV Stick</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="androidtv">Android TV</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="windows">Windows (7 ao 11)</button>
+              <button type="button" class="dl-tab" role="tab" aria-selected="false" data-platform="iphone">iPhone (iOS)</button>
+            </div>
+
+            <div class="dl-body">
+              <div class="dl-info">
+                <div class="dl-meta">
+                  <span class="status-pill status-live" id="dlBadge">● Versão 3.0.0</span>
+                  <span class="mono dl-size" id="dlSize">APK Universal</span>
+                </div>
+
+                <h3 id="dlTitle">PulseTV para Celular &amp; Tablet Android</h3>
+                <p class="dl-desc" id="dlDesc">
+                  Baixe direto no celular ou aponte a câmera para o QR Code ao lado. Interface mobile 100% responsiva sem vazamentos.
+                </p>
+
+                <div class="dl-actions">
+                  <a
+                    id="dlMainBtn"
+                    class="btn btn-primary btn-lg"
+                    href="https://github.com/zackdartdev/pulsetv/releases/download/v3.0.0/PulseTV-Android.apk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <svg class="icon-svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span id="dlMainBtnLabel">Baixar PulseTV Android (.apk)</span>
+                  </a>
+                </div>
+
+                <div class="dl-variants" id="dlVariants"></div>
+
+                <div class="dl-howto">
+                  <span class="mono howto-label">COMO INSTALAR</span>
+                  <ol id="dlSteps">
+                    <li>Aponte a câmera do celular para o QR Code ou toque em <strong>Baixar PulseTV Android</strong>.</li>
+                    <li>Abra o arquivo <code>PulseTV-Android.apk</code> e permita <strong>Instalar apps desconhecidos</strong>.</li>
+                    <li>Abra o PulseTV, faça login com o código <strong class="mono">PLS9K4</strong> e escolha seu perfil.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="qr-card">
+                <div class="qr-frame">
+                  <img
+                    id="dlQrImg"
+                    src="assets/qr/qr-android.svg"
+                    alt="QR Code escaneável para baixar o PulseTV"
+                    width="220"
+                    height="220"
+                  >
+                </div>
+                <strong class="qr-title" id="dlQrTitle">Aponte a câmera do celular</strong>
+                <p class="qr-sub" id="dlQrSub">Baixa o instalador oficial v3.0.0 direto no telefone.</p>
+                <div class="qr-switch" id="qrSwitch">
+                  <button type="button" class="qr-pill is-active" data-qr="assets/qr/qr-android.svg" data-qr-title="Android Universal" data-qr-sub="Funciona em qualquer celular, tablet ou TV Android.">Universal</button>
+                  <button type="button" class="qr-pill" data-qr="assets/qr/qr-arm64.svg" data-qr-title="Android ARM64 Leve" data-qr-sub="Compilação otimizada 64 bits para celulares modernos.">ARM64 Leve</button>
+                  <button type="button" class="qr-pill" data-qr="assets/qr/qr-firestick.svg" data-qr-title="Fire TV Stick (32 bits)" data-qr-sub="Versão leve 32 bits para Fire Stick e Smart TV.">Fire Stick</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ & APOIO PIX NUBANK ==================== -->
+    <section class="section" id="faq">
+      <div class="container faq-container">
+        <div class="section-head reveal">
+          <span class="kicker mono">DÚVIDAS RÁPIDAS</span>
+          <h2>Perguntas frequentes</h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>Como funciona o login exclusivo com o código PLS9K4?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>O PulseTV v3.0 possui tela de autenticação protegida por hash SHA-256. Ao abrir o aplicativo, informe opcionalmente seu nome e digite o código autorizado <strong class="mono">PLS9K4</strong> para desbloquear a seleção de perfis e todo o catálogo.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>Como funcionam os novos Perfis estilo Netflix?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Logo após o login (e sempre que tocar no seu perfil no topo), aparece a tela <strong>“Quem está assistindo?”</strong>. Você pode criar até 6 perfis personalizados, ativar o Modo Infantil ou proteger perfis adultos com PIN de 4 dígitos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>O YouTube dentro do PulseTV realmente não tem anúncios?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Sim! Além do bloqueio nativo de propagandas antes e durante os vídeos, toda a reprodução acontece de forma limpa e contínua. No Perfil Infantil ele fica oculto por segurança.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card">
+            <button type="button" class="faq-q" aria-expanded="false">
+              <span>O APK fica bem ajustado na tela de celulares Android?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" hidden>
+              <p>Sim! Na versão 3.0.0 toda a interface mobile foi desenhada sob medida com barra de navegação inferior fixa, grade responsiva de 3 colunas e proteção total contra qualquer corte ou vazamento lateral.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD DE APOIO COM QR CODE PIX REAL DA CHAVE NUBANK (21) 97088-6158 -->
+        <div class="support-card glass-panel reveal">
+          <div class="support-copy">
+            <span class="kicker mono">PROJETO INDIVIDUAL INDEPENDENTE · APOIO VIA PIX NUBANK</span>
+            <h3>Curtiu o PulseTV? Apoie o desenvolvimento</h3>
+            <p>
+              Este é um projeto individual feito de forma independente, com <strong>1.000 acessos individuais</strong> liberados pelo código <strong class="mono">PLS9K4</strong>. Se gostar, escaneie o QR Code Pix oficial ao lado no app do seu banco ou copie a chave da <strong>Nubank</strong> abaixo para enviar qualquer valor:
+            </p>
+            <div class="pix-key-pill">
+              <span>Chave Pix Nubank (Celular):</span>
+              <strong class="mono">(21) 97088-6158</strong>
+            </div>
+            <div class="pix-actions">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm copy-pix-btn"
+                data-pix="00020126360014br.gov.bcb.pix0114+55219708861585204000053039865802BR5918ISAAC LAMEGO SILVA6014RIO DE JANEIRO62070503***6304271C"
+                data-toast="Código Pix Copia e Cola (Nubank) copiado!"
+              >
+                Copiar Pix Copia e Cola
+              </button>
+              <button
+                type="button"
+                class="btn btn-glass btn-sm copy-pix-btn"
+                data-pix="21970886158"
+                data-toast="Chave Pix (21) 97088-6158 copiada!"
+              >
+                Copiar Chave (21) 97088-6158
+              </button>
+            </div>
+          </div>
+          <div class="support-qr">
+            <div class="qr-frame qr-frame-sm">
+              <img src="assets/qr/qr-pix.svg" alt="QR Code Pix Nubank (21) 97088-6158 para apoiar o PulseTV" width="176" height="176" loading="lazy">
+            </div>
+            <span class="mono support-qr-label">Nubank · (21) 97088-6158</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icons/favicon.svg" alt="" width="28" height="28">
+        <div>
+          <strong>PulseTV</strong>
+          <span>v3.0.0 Android, TV, Fire Stick, iPhone &amp; Windows</span>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#telas-reais">Telas Reais</a>
+        <a href="#youtube">YouTube sem anúncios</a>
+        <a href="#baixar">Baixar + QR Code</a>
+        <a href="app/index.html" target="_blank">PulseTV Web App</a>
+      </div>
+
+      <p class="footer-credit">PulseTV Cinema Ecosystem · Edição Brasil</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox para Telas Reais -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Visualização em tela cheia da interface do PulseTV">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Fechar tela cheia">✕</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Tela anterior">‹</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="assets/screens/inicio.png" alt="Tela inicial real do PulseTV">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima tela">›</button>
+  </div>
+
+  <!-- Toast de Feedback -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span class="toast-dot" aria-hidden="true"></span>
+    <span id="toastText">Código PLS9K4 copiado!</span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

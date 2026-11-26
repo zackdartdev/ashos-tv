@@ -936,7 +936,8 @@
             if (!playUrl || seenUrls.has(playUrl)) return;
             seenUrls.add(playUrl);
 
-            const isPt = PT_REGEX.test(rawText + " " + srv.name);
+            const isPt = srv.name === "AnimesFHD" || PT_REGEX.test(rawText);
+            const isBrFlag = /🇧🇷|dublad|dual|pt[ ._-]*br|comando|bludv|lapumia|wolverdon|micoleao/i.test(rawText);
             const seeders = extractSeeders(rawText);
             const is1080 = /1080p|fhd/i.test(rawText);
             const is720 = /720p|\bhd\b/i.test(rawText);
@@ -945,7 +946,9 @@
 
             let baseScore = 0;
             if (isDirectHttp) baseScore += 4500;
-            if (isPt) baseScore += 3000;
+            if (isPt) baseScore += 4000;
+            if (isBrFlag) baseScore += 3500;
+            if (srv.name === "Torrentio BR" && isPt) baseScore += 1500;
             if (state.prefQuality === "4k" && is4k) baseScore += 700;
             else if (is1080) baseScore += 550;
             else if (is720) baseScore += 420;
@@ -1375,7 +1378,15 @@
     state.currentExpandableBadge = true;
     const initialSlice = state.currentExpandablePool.slice(0, state.visibleCount);
 
-    const continueList = filterByProfileAndGenre([state.movies[1], state.movies[2], state.series[0], state.movies[0]].filter(Boolean), false);
+    const allById = new Map(allItems().map((x) => [x.id, x]));
+    const continueList = filterByProfileAndGenre(
+      Object.entries(state.progress || {})
+        .filter(([, p]) => p && !p.done && (p.pos || 0) > 5000)
+        .sort((a, b) => (b[1].ts || 0) - (a[1].ts || 0))
+        .map(([k]) => allById.get(k.split("_s")[0]))
+        .filter(Boolean),
+      false
+    );
     const trendingWide = filterByProfileAndGenre([state.series[2], state.series[1], state.movies[3], state.movies[4]].filter(Boolean), false);
 
     const gridHeading = state.tab === "filmes"
